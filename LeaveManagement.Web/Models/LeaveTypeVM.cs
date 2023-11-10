@@ -9,6 +9,7 @@ namespace LeaveManagement.Web.Models
         [Display(Name = "Leave Type Name")]
         [Required]
         public string Name { get; set; }
+        [Range(0,25)]
         [Display(Name = "Default Number of Days")]
         [Required]
         public int DefaultDays { get; set; }
