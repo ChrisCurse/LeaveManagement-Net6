@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using LeaveManagement.Web.Configurations.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagement.Web.Data
@@ -10,6 +11,13 @@ namespace LeaveManagement.Web.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new RoleSeedCoonfiguration());
+            builder.ApplyConfiguration(new UserSeedCoonfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedCoonfiguration());
+        }
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocation { get; set; }
     }
