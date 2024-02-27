@@ -117,5 +117,11 @@ namespace LeaveManagement.Web.Repositories
             //return RedirectToAction(nameof(ViewAllocations), new { id = model.EmployeeId })
             return true;
         }
+
+        public async Task<LeaveAllocation?> GetEmployeeAllocation(string Id, int leaveTypeId)
+        {
+            return await context.LeaveAllocation.FirstOrDefaultAsync(q => q.EmployeeId == Id && q.LeaveTypeId == leaveTypeId);
+            
+        }
     }
 }
